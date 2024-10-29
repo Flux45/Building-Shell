@@ -14,6 +14,7 @@ def main():
 
         if command.startswith('type') in valid_commands:
             comm = command[5:]
+            print("!!!!" + comm)
             if comm in valid_commands:
                 sys.stdout.write(f"{comm} is a shell builtin")
             else:
