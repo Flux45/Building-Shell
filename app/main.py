@@ -4,7 +4,7 @@ import sys
 def main():
     # Uncomment this block to pass the first stage
 
-    valid_commands = ['exit 0', ]
+    valid_commands = ['exit 0', 'echo']
 
     while True:
         sys.stdout.write("$ ")
@@ -17,7 +17,10 @@ def main():
             continue
         elif command == 'exit 0':
             sys.exit(0)
-
+        elif command == 'echo':
+            message = command[4:]
+            sys.stdout.write(f"{message}")
+            sys.stdout.flush()
 
 
 
