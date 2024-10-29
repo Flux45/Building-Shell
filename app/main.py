@@ -11,11 +11,8 @@ def main():
         sys.stdout.flush()
         # Wait for user input
         command = input()
-        if command not in valid_commands:
-            sys.stdout.write(f"{command}: command not found\n")
-            sys.stdout.flush()
-            continue
-        elif command == 'exit 0':
+
+        if command == 'exit 0':
             sys.exit(0)
         elif command.startswith('echo'):
             message = command[4:]
@@ -23,6 +20,10 @@ def main():
             print("2!!!!!!" + message)
             sys.stdout.write(f"{message}")
             sys.stdout.flush()
+        elif command not in valid_commands:
+            sys.stdout.write(f"{command}: command not found\n")
+            sys.stdout.flush()
+            continue
 
 
 
