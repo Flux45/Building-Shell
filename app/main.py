@@ -7,7 +7,7 @@ def main():
 
     valid_commands = ['exit 0', 'echo', 'exit', 'type']
     PATH = os.environ.get("PATH")
-    print("PPPAAATTTHHH     : "+ PATH)
+    # print("PPPAAATTTHHH     : "+ PATH)
     while True:
         sys.stdout.write("$ ")
         sys.stdout.flush()
