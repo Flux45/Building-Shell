@@ -18,7 +18,7 @@ def main():
             message = command[5:]
             # print("1!!!!!!" + command)
             # print("2!!!!!!" + message)
-            sys.stdout.write(f"{message}")
+            sys.stdout.write(f"{message}\n")
             sys.stdout.flush()
         elif command not in valid_commands:
             sys.stdout.write(f"{command}: command not found\n")
