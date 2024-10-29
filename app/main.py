@@ -3,14 +3,18 @@ import sys
 
 def main():
     # Uncomment this block to pass the first stage
-    sys.stdout.write("$ ")
-    sys.stdout.flush()
 
-    # Wait for user input
+    valid_commands = []
 
-    command = input()
-    sys.stdout.write(f"{command}: command not found\n")
-    sys.stdout.flush()
+    while True:
+        sys.stdout.write("$ ")
+        sys.stdout.flush()
+        # Wait for user input
+        command = input()
+        if command not in valid_commands:
+            sys.stdout.write(f"{command}: command not found\n")
+            sys.stdout.flush()
+            continue
 
 
 
