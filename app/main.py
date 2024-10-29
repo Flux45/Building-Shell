@@ -11,10 +11,11 @@ def main():
         sys.stdout.flush()
         # Wait for user input
         command = input()
+        comm = command[5:]
+        print("!!!!!    " + comm)
 
         if command.startswith('type') in valid_commands:
             comm = command[5:]
-            print("!!!!" + comm)
             if comm in valid_commands:
                 sys.stdout.write(f"{comm} is a shell builtin")
             else:
