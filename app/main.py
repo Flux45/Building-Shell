@@ -1,5 +1,5 @@
 import sys
-import re
+import subprocess
 import os
 
 def main():
@@ -20,7 +20,7 @@ def main():
             comm = command[5:]
             comm_path = None
             paths = PATH.split(':')
-            print(paths)
+            # print(paths)
             for path in paths:
                 if os.path.isfile(f"{path}/{comm}"):
                     comm_path = f"{path}/{comm}"
@@ -38,11 +38,11 @@ def main():
             sys.exit(0)
         elif command.startswith('echo'):
             message = command[5:]
-            # print("1!!!!!!" + command)
-            # print("2!!!!!!" + message)
             sys.stdout.write(f"{message}\n")
             sys.stdout.flush()
         elif command not in valid_commands:
+            if os.path.isfile(command.split(" ")[0]):
+                os.system(command)
             sys.stdout.write(f"{command}: command not found\n")
             sys.stdout.flush()
             continue
