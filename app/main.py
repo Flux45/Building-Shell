@@ -51,7 +51,7 @@ def main():
             message = command[5:]
             sys.stdout.write(f"{message}\n")
             sys.stdout.flush()
-        elif executable := locate_executable(comm):
+        elif executable := locate_executable(user_command):
             subprocess.run([executable, *args])
         else:
             sys.stdout.write(f"{command}: command not found\n")
