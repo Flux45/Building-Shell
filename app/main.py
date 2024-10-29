@@ -1,5 +1,5 @@
 import sys
-
+import re
 
 def main():
     # Uncomment this block to pass the first stage
@@ -11,10 +11,10 @@ def main():
         sys.stdout.flush()
         # Wait for user input
         command = input()
-        comm = command[5:]
-        print("!!!!!    " + comm)
+        # comm = command[5:]
+        # print("!!!!!    " + comm)
 
-        if command.startswith('type') in valid_commands:
+        if command.startswith('type'):
             comm = command[5:]
             if comm in valid_commands:
                 sys.stdout.write(f"{comm} is a shell builtin")
