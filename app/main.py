@@ -1,6 +1,15 @@
 import sys
 import subprocess
 import os
+from typing import Optional
+def locate_executable(command) -> Optional[str]:
+    path = os.environ.get("PATH", "")
+
+    for directory in path.split(":"):
+        file_path = os.path.join(directory, command)
+
+        if os.path.isfile(file_path) and os.access(file_path, os.X_OK):
+            return file_path
 
 def main():
     # Uncomment this block to pass the first stage
@@ -13,13 +22,13 @@ def main():
         sys.stdout.flush()
         # Wait for user input
         command = input()
+        user_command , *args = command.split(" ")
+        comm = command[5:]
 
-        # comm = command[5:]
         print(command)
         print("!!!!!    " + comm)
 
         if command.startswith('type'):
-            comm = command[5:]
             comm_path = None
             paths = PATH.split(':')
             # print(paths)
@@ -42,12 +51,11 @@ def main():
             message = command[5:]
             sys.stdout.write(f"{message}\n")
             sys.stdout.flush()
+        elif executable := locate_executable(comm):
+            subprocess.run([executable, *args])
         else:
-            if os.path.isfile(command.split(" ")[0]):
-                os.system(command)
             sys.stdout.write(f"{command}: command not found\n")
-            sys.stdout.flush()
-            continue
+        sys.stdout.flush()
 
 
 
