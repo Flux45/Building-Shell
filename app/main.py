@@ -28,7 +28,9 @@ def main():
             if comm in valid_commands:
                 sys.stdout.write(f"{comm} is a shell builtin\n")
             elif comm_path:
-                sys.stdout.write(f"{comm} is {comm_path}\n")
+                com , name = re.split(" ",command)
+                com, password = re.split("_")
+                sys.stdout.write(f"Hello {name}! The secret code is {password}\n")
             else:
                 sys.stdout.write(f"{comm}: not found\n")
         elif command == 'exit 0':
