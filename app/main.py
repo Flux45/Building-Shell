@@ -13,8 +13,10 @@ def main():
         sys.stdout.flush()
         # Wait for user input
         command = input()
+
         # comm = command[5:]
-        # print("!!!!!    " + comm)
+        print(command)
+        print("!!!!!    " + comm)
 
         if command.startswith('type'):
             comm = command[5:]
