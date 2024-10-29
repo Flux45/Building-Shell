@@ -1,11 +1,13 @@
 import sys
 import re
+import os
 
 def main():
     # Uncomment this block to pass the first stage
 
     valid_commands = ['exit 0', 'echo', 'exit', 'type']
-
+    PATH = os.environ.get("PATH")
+    print("PPPAAATTTHHH     : "+ PATH)
     while True:
         sys.stdout.write("$ ")
         sys.stdout.flush()
@@ -16,8 +18,16 @@ def main():
 
         if command.startswith('type'):
             comm = command[5:]
+            comm_path = None
+            paths = PATH.split(':')
+            for path in paths:
+                if os.path.isfile(f"{path}/{comm}"):
+                    comm_path = f"{path}/{comm}"
+
             if comm in valid_commands:
                 sys.stdout.write(f"{comm} is a shell builtin\n")
+            elif comm_path:
+                sys.stdout.write(f"{comm} is {comm_path}\n")
             else:
                 sys.stdout.write(f"{comm}: not found\n")
         elif command == 'exit 0':
