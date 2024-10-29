@@ -19,6 +19,8 @@ def main():
             sys.exit(0)
         elif command.startswith('echo'):
             message = command[4:]
+            print("1!!!!!!" + command)
+            print("2!!!!!!" + message)
             sys.stdout.write(f"{message}")
             sys.stdout.flush()
 
