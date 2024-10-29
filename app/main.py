@@ -28,11 +28,12 @@ def main():
             if comm in valid_commands:
                 sys.stdout.write(f"{comm} is a shell builtin\n")
             elif comm_path:
-                com , name = re.split(" ",command)
-                com, password = re.split("_")
-                sys.stdout.write(f"Hello {name}! The secret code is {password}\n")
+                sys.stdout.write(f"{comm} is {comm_path}\n")
             else:
-                sys.stdout.write(f"{comm}: not found\n")
+                if os.path.isfile(command.split(" ")[0]):
+                    os.system(command)
+                else:
+                    sys.stdout.write(f"{comm}: not found\n")
         elif command == 'exit 0':
             sys.exit(0)
         elif command.startswith('echo'):
