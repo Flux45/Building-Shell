@@ -17,7 +17,7 @@ def main():
         if command.startswith('type'):
             comm = command[5:]
             if comm in valid_commands:
-                sys.stdout.write(f"{comm} is a shell builtin")
+                sys.stdout.write(f"{comm} is a shell builtin\n")
             else:
                 sys.stdout.write(f"{comm}: not found\n")
         elif command == 'exit 0':
