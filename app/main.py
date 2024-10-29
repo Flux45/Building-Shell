@@ -25,8 +25,7 @@ def main():
         user_command , *args = command.split(" ")
         comm = command[5:]
 
-        print(command)
-        print("!!!!!    " + comm)
+
 
         if command.startswith('type'):
             comm_path = None
@@ -52,6 +51,7 @@ def main():
             sys.stdout.write(f"{message}\n")
             sys.stdout.flush()
         elif executable := locate_executable(user_command):
+
             subprocess.run([executable, *args])
         else:
             sys.stdout.write(f"{command}: command not found\n")
