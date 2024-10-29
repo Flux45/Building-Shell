@@ -20,6 +20,7 @@ def main():
             comm = command[5:]
             comm_path = None
             paths = PATH.split(':')
+            print(paths)
             for path in paths:
                 if os.path.isfile(f"{path}/{comm}"):
                     comm_path = f"{path}/{comm}"
