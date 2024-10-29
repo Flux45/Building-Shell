@@ -40,7 +40,7 @@ def main():
             message = command[5:]
             sys.stdout.write(f"{message}\n")
             sys.stdout.flush()
-        elif command not in valid_commands:
+        else:
             if os.path.isfile(command.split(" ")[0]):
                 os.system(command)
             sys.stdout.write(f"{command}: command not found\n")
