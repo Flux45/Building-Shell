@@ -23,7 +23,6 @@ def main():
         sys.stdout.flush()
         # Wait for user input
         command = input().split()
-        user_command, args = command
         # if command[0] not in commands:
         #     print(f"${command[0]}: command not found")
         # elif command[0] == "exit" and command[1] == "0":
@@ -54,7 +53,7 @@ def main():
                 print(f"{os.getcwd()}")
             case "cd":
                 try:
-                    os.chdir(" ".join(args))
+                    os.chdir(" ".join(command[1:]))
                 except FileNotFoundError:
                     print(" ".join(command) + ": No such file or directory")
             case _:
