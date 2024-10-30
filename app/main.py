@@ -14,7 +14,7 @@ def locate_executable(command) -> Optional[str]:
 def main():
     # Uncomment this block to pass the first stage
 
-    valid_commands = ['exit 0', 'echo', 'exit', 'type','pwd']
+    valid_commands = ['exit 0', 'echo', 'exit', 'type','pwd','cd']
     PATH = os.environ.get("PATH")
     # print("PPPAAATTTHHH     : "+ PATH)
     while True:
@@ -48,6 +48,12 @@ def main():
             sys.exit(0)
         elif command == 'pwd':
             sys.stdout.write(f"{os.getcwd()}\n")
+        elif command == 'cd':
+            if os.path.isdir(PATH) or os.path.isfile(PATH):
+                sys.stdout.write(f"{PATH}\n")
+            else:
+                sys.stdout.write(f"cd: {PATH}: No such file or directory")
+
         elif command.startswith('echo'):
             message = command[5:]
             sys.stdout.write(f"{message}\n")
