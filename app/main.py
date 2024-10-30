@@ -14,7 +14,7 @@ def locate_executable(command) -> Optional[str]:
 def main():
     # Uncomment this block to pass the first stage
 
-    valid_commands = ['exit 0', 'echo', 'exit', 'type']
+    valid_commands = ['exit 0', 'echo', 'exit', 'type','pwd']
     PATH = os.environ.get("PATH")
     # print("PPPAAATTTHHH     : "+ PATH)
     while True:
