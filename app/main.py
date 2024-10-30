@@ -2,6 +2,7 @@ import sys
 import subprocess
 import os
 from os import chdir
+from sys import executable
 from typing import Optional
 from os.path import expanduser
 from subprocess import call
@@ -22,7 +23,9 @@ def main():
         sys.stdout.write("$ ")
         sys.stdout.flush()
         # Wait for user input
-        command = input().split()
+        comm = input()
+        command = comm.split()
+        user_command , args = comm.split(" ")
         # if command[0] not in commands:
         #     print(f"${command[0]}: command not found")
         # elif command[0] == "exit" and command[1] == "0":
@@ -57,8 +60,8 @@ def main():
                 except FileNotFoundError:
                     print(command[0]+ ": " + command[1] + ": No such file or directory")
             case _:
-                if os.path.exists(command[0]):
-                    os.system(command)
+                if executable := locate_executable(user_command):
+                    subprocess.run([executable, args])
                 else:
                     # print("i'm here")
                     print(f"${command[0]}: command not found")
