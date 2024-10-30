@@ -53,6 +53,7 @@ def main():
         elif user_command == 'pwd':
             sys.stdout.write(f"{os.getcwd()}\n")
         elif user_command == "cd":
+            print(args[0])
             if not args:
                 target_directory = os.path.expanduser("~")
             else:
