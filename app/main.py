@@ -60,7 +60,7 @@ def main():
                         print(f"{command[0]}: command failed with error code {e.returncode}")
                 else:
                     print(f"{command[0]}: command not found")
-        sys.stdout.flush()
+        # sys.stdout.flush()
 if __name__ == "__main__":
     main()
 
