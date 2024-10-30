@@ -4,7 +4,7 @@ import os
 from os import chdir
 from typing import Optional
 from os.path import expanduser
-
+from subprocess import call
 
 def locate_executable(command) -> Optional[str]:
     path = os.environ.get("PATH", "")
@@ -65,7 +65,8 @@ def main():
                 sys.stdout.write(f"cd: {directory}: No such file or directory\n")
 
 
-
+        elif command.startswith("/"):
+            call("{} {}".format(command, " ".join(args)), shell=True)
         elif command.startswith('echo'):
             message = command[5:]
             sys.stdout.write(f"{message}\n")
