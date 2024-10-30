@@ -1,7 +1,11 @@
 import sys
 import subprocess
 import os
+from os import chdir
 from typing import Optional
+from os.path import expanduser
+
+
 def locate_executable(command) -> Optional[str]:
     path = os.environ.get("PATH", "")
 
@@ -47,11 +51,13 @@ def main():
         elif command == 'exit 0':
             sys.exit(0)
         elif command == 'pwd':
-            print(f"{os.getcwd()}\n")
+            sys.stdout.write(f"{os.getcwd()}\n")
         elif command.startswith('cd'):
+            directory = args
+
             try:
-                os.chdir(" ".join(command.split(" ")[1:]))
-            except FileNotFoundError:
+                chdir(expanduser(directory))
+            except OSError:
                 print(" ".join(user_command) + ": No such file or directory")
 
 
