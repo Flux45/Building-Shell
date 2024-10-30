@@ -13,7 +13,7 @@ def locate_executable(command) -> Optional[str]:
         file_path = os.path.join(directory, command)
         if os.path.isfile(file_path) and os.access(file_path, os.X_OK):
             return file_path
-        return None
+    return None
 
 def main():
     commands = {"exit", "echo", "type","pwd"}
