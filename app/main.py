@@ -48,7 +48,7 @@ def main():
             sys.exit(0)
         elif command == 'pwd':
             sys.stdout.write(f"{os.getcwd()}\n")
-        elif command == 'cd':
+        elif command.startswith('cd'):
             if os.path.isdir(PATH) or os.path.isfile(PATH):
                 sys.stdout.write(f"{PATH}\n")
             else:
