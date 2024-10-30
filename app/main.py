@@ -22,7 +22,7 @@ def main():
         sys.stdout.flush()
         # Wait for user input
         command = input()
-        user_command , *args = command.split(" ")
+        user_command , args = command.split(" ")
         comm = command[5:]
 
 
@@ -49,10 +49,12 @@ def main():
         elif command == 'pwd':
             sys.stdout.write(f"{os.getcwd()}\n")
         elif command.startswith('cd'):
-            if os.path.isdir(PATH) or os.path.isfile(PATH):
-                sys.stdout.write(f"{PATH}\n")
+            ppath = args
+
+            if os.path.isdir(ppath) or os.path.isfile(ppath):
+                sys.stdout.write(f"{ppath}\n")
             else:
-                sys.stdout.write(f"cd: {PATH}: No such file or directory")
+                sys.stdout.write(f"cd: {ppath}: No such file or directory")
 
         elif command.startswith('echo'):
             message = command[5:]
