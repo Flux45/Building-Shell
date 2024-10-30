@@ -14,7 +14,8 @@ def main():
         sys.stdout.write("$ ")
         sys.stdout.flush()
         # Wait for user input
-        command = input().split()
+        comm = input()
+        command = comm.split()
         # if command[0] not in commands:
         #     print(f"${command[0]}: command not found")
         # elif command[0] == "exit" and command[1] == "0":
@@ -50,7 +51,7 @@ def main():
                     print(command[0]+ ": " + command[1] + ": No such file or directory")
             case _:
                 if os.path.exists(command[0]):
-                    os.system(" ".join(command))
+                    os.system(comm)
                 else:
                     # print("i'm here")
                     print(f"${command[0]}: command not found")
