@@ -47,6 +47,8 @@ def main():
             case "pwd":
                 print(f"{os.getcwd()}")
             case "cd":
+                if command[1] == '~':
+                    print(f"{os.getcwd()}")
                 try:
                     os.chdir(" ".join(command[1:]))
                 except FileNotFoundError:
