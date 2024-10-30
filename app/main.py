@@ -47,14 +47,7 @@ def main():
         elif command == 'exit 0':
             sys.exit(0)
         elif command == 'pwd':
-            # sys.stdout.write(f"{PATH}\n")
-            comm_path = None
-            paths = PATH.split(':')
-            # print(paths)
-            for path in paths:
-                if os.path.isfile(f"{path}/{comm}"):
-                    comm_path = f"{path}"
-            sys.stdout.write(f"{comm_path}\n")
+            sys.stdout.write(f"{os.getcwd()}\n")
         elif command.startswith('echo'):
             message = command[5:]
             sys.stdout.write(f"{message}\n")
