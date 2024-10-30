@@ -106,10 +106,10 @@ def main():
                     sys.stdout.write(f"{comm}: not found\n")
         elif command == 'exit 0':
             sys.exit(0)
-        elif user_command == 'pwd':
+        elif command.startswith('pwd'):
             dir = os.getcwd()
             sys.stdout.write(f"{dir}\n")
-        elif user_command == "cd":
+        elif command.startswith('cd'):
             try:
                 os.chdir(" ".join(gcomm[1:]))
             except FileNotFoundError:
