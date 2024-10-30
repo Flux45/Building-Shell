@@ -49,12 +49,12 @@ def main():
         elif command == 'pwd':
             sys.stdout.write(f"{os.getcwd()}\n")
         elif command.startswith('cd'):
-            ppath = args
+            PATH = args
 
-            if os.path.isdir(ppath) or os.path.isfile(ppath):
-                sys.stdout.write(f"{ppath}\n")
-            else:
-                sys.stdout.write(f"cd: {ppath}: No such file or directory")
+            # if os.path.isdir(ppath) or os.path.isfile(ppath):
+            #     sys.stdout.write(f"{ppath}\n")
+            # else:
+            #     sys.stdout.write(f"cd: {ppath}: No such file or directory")
 
         elif command.startswith('echo'):
             message = command[5:]
