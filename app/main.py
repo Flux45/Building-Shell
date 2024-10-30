@@ -59,6 +59,7 @@ def main():
             try:
                 # print("drr")
                 chdir(expanduser(directory))
+                print("CURRENT DIR:  " + os.getcwd())
                 # print("drr changed")
             except OSError:
                 print(f"cd: {directory}: No such file or directory")
