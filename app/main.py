@@ -18,7 +18,7 @@ def main():
     PATH = os.environ.get("PATH")
     # print("PPPAAATTTHHH     : "+ PATH)
     while True:
-        sys.stdout.write("$")
+        sys.stdout.write("$ ")
         sys.stdout.flush()
         # Wait for user input
         command = input()
