@@ -17,7 +17,7 @@ def locate_executable(command) -> Optional[str]:
 
 
 def main():
-    commands = {"exit", "echo", "type"}
+    commands = {"exit", "echo", "type", "pwd"}
     while True:
         sys.stdout.write("$ ")
         sys.stdout.flush()
