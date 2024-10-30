@@ -1,7 +1,7 @@
 import sys
 import subprocess
 import os
-from os import chdir
+from os import chdir, getcwd
 from typing import Optional
 from os.path import expanduser
 
@@ -51,7 +51,7 @@ def main():
         elif command == 'exit 0':
             sys.exit(0)
         elif command == 'pwd':
-            sys.stdout.write(f"{os.getcwd()}\n")
+            print(getcwd())
         elif command.startswith('cd'):
             directory = args
 
