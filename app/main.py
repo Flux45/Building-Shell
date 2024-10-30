@@ -46,6 +46,8 @@ def main():
                     sys.stdout.write(f"{comm}: not found\n")
         elif command == 'exit 0':
             sys.exit(0)
+        elif command == 'pwd':
+            sys.stdout.write(PATH)
         elif command.startswith('echo'):
             message = command[5:]
             sys.stdout.write(f"{message}\n")
