@@ -59,7 +59,7 @@ def main():
             try:
                 # print("drr")
                 chdir((directory))
-                sys.stdout.write("CURRENT DIR:  " + os.getcwd())
+                sys.stdout.write("CURRENT DIR:  " + os.getcwd() + "\n")
                 # print("drr changed")
             except OSError:
                 sys.stdout.write(f"cd: {directory}: No such file or directory\n")
