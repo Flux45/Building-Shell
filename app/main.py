@@ -47,7 +47,7 @@ def main():
         elif command == 'exit 0':
             sys.exit(0)
         elif command == 'pwd':
-            sys.stdout.write(PATH)
+            sys.stdout.write(f"{PATH}\n")
         elif command.startswith('echo'):
             message = command[5:]
             sys.stdout.write(f"{message}\n")
