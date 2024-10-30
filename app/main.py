@@ -49,6 +49,7 @@ def main():
             case "cd":
                 if command[1] == '~':
                     directory = getcwd()
+                    break
                 try:
                     os.chdir(" ".join(command[1:]))
                 except FileNotFoundError:
