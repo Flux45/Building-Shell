@@ -51,7 +51,8 @@ def main():
         elif command == 'exit 0':
             sys.exit(0)
         elif user_command == 'pwd':
-            sys.stdout.write(f"{os.getcwd()}\n")
+            dir = os.getcwd()
+            sys.stdout.write(f"{dir}\n")
         elif user_command == "cd":
             directory = command.split(" ")[1]
             # print("asdas    " + directory)
