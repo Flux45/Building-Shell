@@ -58,11 +58,11 @@ def main():
             # print("asdas    " + directory)
             try:
                 # print("drr")
-                chdir(expanduser(directory))
-                print("CURRENT DIR:  " + os.getcwd())
+                chdir((directory))
+                sys.stdout.write("CURRENT DIR:  " + os.getcwd())
                 # print("drr changed")
             except OSError:
-                print(f"cd: {directory}: No such file or directory")
+                sys.stdout.write(f"cd: {directory}: No such file or directory\n")
 
 
 
