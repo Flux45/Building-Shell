@@ -13,7 +13,7 @@ def locate_executable(command) -> Optional[str]:
         file_path = os.path.join(directory, command)
         if os.path.isfile(file_path) and os.access(file_path, os.X_OK):
             return file_path
-        return None
+    return None
 
 def main():
     commands = {"exit", "echo", "type","pwd"}
@@ -60,6 +60,7 @@ def main():
                         print(f"{command[0]}: command failed with error code {e.returncode}")
                 else:
                     print(f"{command[0]}: command not found")
+        sys.stdout.flush()
 if __name__ == "__main__":
     main()
 
