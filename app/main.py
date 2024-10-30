@@ -267,7 +267,7 @@ def main() -> None:
                     try:
                         chdir(expanduser(directory))
                     except OSError:
-                        print(f"cd: {directory}: No such file or directory")
+                        print(f"cd: {directory}: No such file or directory\n")
                 elif command.startswith("/"):
                     call("{} {}".format(command, " ".join(arguments)), shell=True)
                 else:
