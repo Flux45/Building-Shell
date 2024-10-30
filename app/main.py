@@ -53,7 +53,7 @@ def main():
         elif user_command == 'pwd':
             sys.stdout.write(f"{os.getcwd()}\n")
         elif user_command == "cd":
-            os.chdir(command.split(" ")[2])
+            os.chdir(command.split(" ")[1])
             # try:
             #     os.chdir("".join(command[1:]))
             # except FileNotFoundError:
