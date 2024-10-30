@@ -1,7 +1,7 @@
 import sys
 import subprocess
 import os
-from os import chdir
+from os import chdir, getcwd
 from sys import executable
 from typing import Optional
 from os.path import expanduser
@@ -48,7 +48,7 @@ def main():
                 print(f"{os.getcwd()}")
             case "cd":
                 if command[1] == '~':
-                    print(f"{os.getcwd()}")
+                    directory = getcwd()
                 try:
                     os.chdir(" ".join(command[1:]))
                 except FileNotFoundError:
