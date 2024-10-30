@@ -47,12 +47,13 @@ def main():
             case "pwd":
                 print(f"{os.getcwd()}")
             case "cd":
-                if command[1] == '~':
-                    return None
-                try:
-                    os.chdir(" ".join(command[1:]))
-                except FileNotFoundError:
-                    print(command[0]+ ": " + command[1] + ": No such file or directory")
+                if len(command) > 1:
+                    try:
+                        os.chdir(" ".join(command[1:]))
+                    except FileNotFoundError:
+                        print(command[0]+ ": " + command[1] + ": No such file or directory")
+                else:
+                    os.chdir(os.path.expanduser("~"))
             case _:
                 executable = locate_executable(command[0])
                 if executable:
