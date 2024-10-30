@@ -1,7 +1,7 @@
 import sys
 import subprocess
 import os
-from os import chdir, getcwd
+from os import chdir
 from typing import Optional
 from os.path import expanduser
 
@@ -50,15 +50,13 @@ def main():
                     sys.stdout.write(f"{comm}: not found\n")
         elif command == 'exit 0':
             sys.exit(0)
-        elif command == 'pwd':
-            print(getcwd())
-        elif command.startswith('cd'):
-            directory = args
-
+        elif user_command == 'pwd':
+            sys.stdout.write(f"{os.getcwd()}\n")
+        elif user_command == "cd":
             try:
-                chdir(expanduser(directory))
-            except OSError:
-                print(" ".join(user_command) + ": No such file or directory")
+                os.chdir(" ".join(command[1:]))
+            except FileNotFoundError:
+                print(" ".join(command) + ": No such file or directory")
 
 
         elif command.startswith('echo'):
