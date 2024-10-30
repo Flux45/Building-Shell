@@ -7,6 +7,14 @@ from typing import Optional
 from os.path import expanduser
 from subprocess import call
 
+def locate_executable(command) -> Optional[str]:
+    path = os.environ.get("PATH", "")
+
+    for directory in path.split(":"):
+        file_path = os.path.join(directory, command)
+
+        if os.path.isfile(file_path) and os.access(file_path, os.X_OK):
+            return file_path
 
 def main():
     commands = {"exit", "echo", "type","pwd"}
@@ -16,12 +24,7 @@ def main():
         # Wait for user input
         comm = input()
         command = comm.split()
-        # if command[0] not in commands:
-        #     print(f"${command[0]}: command not found")
-        # elif command[0] == "exit" and command[1] == "0":
-        #     sys.exit(0)
-        # elif command[0] == "echo":
-        #     print(" ".join(command[1:]))
+
         match command[0]:
             case "exit":
                 if command[1] == "0":
@@ -50,8 +53,10 @@ def main():
                 except FileNotFoundError:
                     print(command[0]+ ": " + command[1] + ": No such file or directory")
             case _:
-                if os.path.exists(command[0]):
-                    os.system(comm)
+                #         elif executable := locate_executable(user_command):
+                #             subprocess.run([executable, *args])
+                if executable := locate_executable(command[0]):
+                    subprocess.run([command[0], command[1:]])
                 else:
                     # print("i'm here")
                     print(f"${command[0]}: command not found")
