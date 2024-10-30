@@ -56,9 +56,9 @@ def main():
             directory = command.split(" ")[1]
             # print("asdas    " + directory)
             try:
-                print("drr")
+                # print("drr")
                 chdir(expanduser(directory))
-                print("drr changed")
+                # print("drr changed")
             except OSError:
                 print(f"cd: {directory}: No such file or directory")
 
