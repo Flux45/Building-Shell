@@ -55,7 +55,7 @@ def main():
                 try:
                     os.chdir(" ".join(command[1:]))
                 except FileNotFoundError:
-                    print(" ".join(command) + ": No such file or directory")
+                    print(command[0]+ ": " + command[1] + ": No such file or directory")
             case _:
                 if os.path.exists(command[0]):
                     os.system(" ".join(command))
