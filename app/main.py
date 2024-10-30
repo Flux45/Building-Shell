@@ -58,7 +58,7 @@ def main():
                     print(command[0]+ ": " + command[1] + ": No such file or directory")
             case _:
                 if os.path.exists(command[0]):
-                    os.system(" ".join(command))
+                    os.system(command)
                 else:
                     # print("i'm here")
                     print(f"${command[0]}: command not found")
