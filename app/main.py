@@ -17,17 +17,17 @@ def main():
     valid_commands = ['exit 0', 'echo', 'exit', 'type','pwd']
     PATH = os.environ.get("PATH")
     # print("PPPAAATTTHHH     : "+ PATH)
-    # while True:
-    sys.stdout.write("$ ")
-    sys.stdout.flush()
-    # Wait for user input
-    command = input()
-    user_command , *args = command.split(" ")
-    comm = command[5:]
+    while True:
+        sys.stdout.write("$ ")
+        sys.stdout.flush()
+        # Wait for user input
+        command = input()
+        user_command , *args = command.split(" ")
+        comm = command[5:]
 
 
 
-    if command.startswith('type'):
+        if command.startswith('type'):
             comm_path = None
             paths = PATH.split(':')
             # print(paths)
@@ -44,9 +44,9 @@ def main():
                     os.system(command)
                 else:
                     sys.stdout.write(f"{comm}: not found\n")
-    elif command == 'exit 0':
+        elif command == 'exit 0':
             sys.exit(0)
-    elif command == 'pwd':
+        elif command == 'pwd':
             # sys.stdout.write(f"{PATH}\n")
             comm_path = None
             paths = PATH.split(':')
@@ -54,16 +54,16 @@ def main():
             for path in paths:
                 if os.path.isfile(f"{path}/{comm}"):
                     comm_path = f"{path}"
-                    sys.stdout.write(f"{comm_path}\n")
-    elif command.startswith('echo'):
+            sys.stdout.write(f"{comm_path}\n")
+        elif command.startswith('echo'):
             message = command[5:]
             sys.stdout.write(f"{message}\n")
             sys.stdout.flush()
-    elif executable := locate_executable(user_command):
+        elif executable := locate_executable(user_command):
             subprocess.run([executable, *args])
-    else:
+        else:
             sys.stdout.write(f"{command}: command not found\n")
-            sys.stdout.flush()
+        sys.stdout.flush()
 
 
 
