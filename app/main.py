@@ -54,9 +54,11 @@ def main():
             sys.stdout.write(f"{os.getcwd()}\n")
         elif user_command == "cd":
             directory = command.split(" ")[1]
-            print("asdas    " + directory)
+            # print("asdas    " + directory)
             try:
+                print("drr")
                 chdir(expanduser(directory))
+                print("drr changed")
             except OSError:
                 print(f"cd: {directory}: No such file or directory")
 
