@@ -9,12 +9,11 @@ from subprocess import call
 
 def locate_executable(command) -> Optional[str]:
     path = os.environ.get("PATH", "")
-
     for directory in path.split(":"):
         file_path = os.path.join(directory, command)
-
         if os.path.isfile(file_path) and os.access(file_path, os.X_OK):
             return file_path
+        return None
 
 def main():
     commands = {"exit", "echo", "type","pwd"}
@@ -53,11 +52,14 @@ def main():
                 except FileNotFoundError:
                     print(command[0]+ ": " + command[1] + ": No such file or directory")
             case _:
-                if os.path.exists(command[0]) and os.access():
-                    os.system(comm)
+                executable = locate_executable(command[0])
+                if executable:
+                    try:
+                        subprocess.run([executable] + command[1:], check=True)
+                    except subprocess.CalledProcessError as e:
+                        print(f"{command[0]}: command failed with error code {e.returncode}")
                 else:
-                    # print("i'm here")
-                    print(f"${command[0]}: command not found")
+                    print(f"{command[0]}: command not found")
 if __name__ == "__main__":
     main()
 
