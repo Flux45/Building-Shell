@@ -47,12 +47,12 @@ def main():
         elif command == 'exit 0':
             sys.exit(0)
         elif command == 'pwd':
-            sys.stdout.write(f"{os.getcwd()}\n")
+            print(f"{os.getcwd()}\n")
         elif command.startswith('cd'):
             try:
                 os.chdir(" ".join(command.split(" ")[1:]))
             except FileNotFoundError:
-                sys.stdout.write(" ".join(user_command) + ": No such file or directory")
+                print(" ".join(user_command) + ": No such file or directory")
 
 
         elif command.startswith('echo'):
